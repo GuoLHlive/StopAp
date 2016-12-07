@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.example.administrator.stopapp.dagger.AppComponent;
 import com.example.administrator.stopapp.dagger.AppModule;
+import com.example.administrator.stopapp.dagger.DaggerAppComponent;
 
 
 /**

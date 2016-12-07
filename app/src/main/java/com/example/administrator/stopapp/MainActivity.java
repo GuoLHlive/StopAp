@@ -12,8 +12,7 @@ import com.example.administrator.stopapp.databinding.ActivityMainBinding;
 import com.example.administrator.stopapp.fragment.BaseFragment;
 import com.example.administrator.stopapp.fragment.FirstFragment;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -31,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
         appComponent = MyApp.getApp(getApplicationContext()).component();
         firstFragment =appComponent.getFirstFragment();
         getSupportFragmentManager().beginTransaction().replace(R.id.mfragment,firstFragment).commit();
-        MyApp app = MyApp.getApp(getApplicationContext());
 
     }
 }
