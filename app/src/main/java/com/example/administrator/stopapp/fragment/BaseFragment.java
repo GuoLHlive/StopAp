@@ -18,6 +18,8 @@ import com.example.administrator.stopapp.dagger.AppComponent;
 
 import java.util.ArrayList;
 
+import javax.inject.Inject;
+
 /**
  * Created by Administrator on 2016/12/5.
  */
@@ -25,6 +27,8 @@ public abstract class BaseFragment extends Fragment {
 
     protected AppComponent appComponent;
     protected ViewDataBinding view;
+
+    @Inject
     protected ArrayList<BaseFragment> fragmentlist;
 
 
@@ -51,7 +55,7 @@ public abstract class BaseFragment extends Fragment {
                 R.anim.push_left_in,
                 R.anim.push_left_out);
         if (!to.isAdded()){
-            fragmentlist.add(to);
+//            fragmentlist.add(to);
             transaction.hide(from).add(R.id.mfragment,to).commit();
         }else {
             transaction.hide(from).show(to).commit();
@@ -61,7 +65,8 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-        getFocus();
+//        getFocus();
+
     }
 
     public void getFocus() {
@@ -80,15 +85,15 @@ public abstract class BaseFragment extends Fragment {
                             R.anim.push_left_out,
                             R.anim.push_left_in,
                             R.anim.push_left_out);
-                    if (size==0){
-                        getActivity().finish();
-                   }else if(size==1){
-                        transaction.remove(fragmentlist.get(0)).show(appComponent.getFirstFragment()).commit();
-                        fragmentlist.clear();
-                   }else {
-                        transaction.remove(fragmentlist.get(size-1)).show(fragmentlist.get(size-2)).commit();
-                        fragmentlist.remove(fragmentlist.get(size-1));
-                    }
+//                    if (size==0){
+//                        getActivity().finish();
+//                   }else if(size==1){
+//                        transaction.remove(fragmentlist.get(0)).show(appComponent.getFirstFragment()).commit();
+//                        fragmentlist.clear();
+//                   }else {
+//                        transaction.remove(fragmentlist.get(size-1)).show(fragmentlist.get(size-2)).commit();
+//                        fragmentlist.remove(fragmentlist.get(size-1));
+//                    }
                     return true;
                 }
                 return false;

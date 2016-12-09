@@ -19,6 +19,7 @@ public class NextFragment extends BaseFragment{
     private NextfragmentLayoutBinding binding;
 
 
+
     @Override
     public int getLayoutId() {
         return R.layout.nextfragment_layout;

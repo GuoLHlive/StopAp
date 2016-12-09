@@ -12,14 +12,15 @@ import com.example.administrator.stopapp.databinding.ActivityMainBinding;
 import com.example.administrator.stopapp.fragment.BaseFragment;
 import com.example.administrator.stopapp.fragment.FirstFragment;
 
-
+import javax.inject.Inject;
 
 
 public class MainActivity extends AppCompatActivity {
 
 
     private AppComponent appComponent;
-    private FirstFragment firstFragment;
+    @Inject
+    public FirstFragment firstFragment;
     private ActivityMainBinding binding;
 
 
