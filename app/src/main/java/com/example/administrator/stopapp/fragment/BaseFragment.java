@@ -28,8 +28,9 @@ public abstract class BaseFragment extends Fragment {
     protected AppComponent appComponent;
     protected ViewDataBinding view;
 
-    @Inject
+
     protected ArrayList<BaseFragment> fragmentlist;
+
 
 
     @Nullable
@@ -49,15 +50,17 @@ public abstract class BaseFragment extends Fragment {
     public abstract void initView();
 
     protected void switchContent(BaseFragment from,BaseFragment to){
+        Log.i("MactivityFragment","fragmentlist:"+fragmentlist.size()+"'");
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.setCustomAnimations(R.anim.push_left_in,
                 R.anim.push_left_out,
                 R.anim.push_left_in,
                 R.anim.push_left_out);
         if (!to.isAdded()){
-//            fragmentlist.add(to);
+            fragmentlist.add(to);
             transaction.hide(from).add(R.id.mfragment,to).commit();
         }else {
+            fragmentlist.add(to);
             transaction.hide(from).show(to).commit();
         }
     }
@@ -65,7 +68,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
-//        getFocus();
+        getFocus();
 
     }
 
@@ -85,19 +88,18 @@ public abstract class BaseFragment extends Fragment {
                             R.anim.push_left_out,
                             R.anim.push_left_in,
                             R.anim.push_left_out);
-//                    if (size==0){
-//                        getActivity().finish();
-//                   }else if(size==1){
-//                        transaction.remove(fragmentlist.get(0)).show(appComponent.getFirstFragment()).commit();
-//                        fragmentlist.clear();
-//                   }else {
-//                        transaction.remove(fragmentlist.get(size-1)).show(fragmentlist.get(size-2)).commit();
-//                        fragmentlist.remove(fragmentlist.get(size-1));
-//                    }
+                    if (size==1){
+                        getActivity().finish();
+                   }else {
+                        transaction.show(fragmentlist.get(size-2)).hide(fragmentlist.get(size-1)).commit();
+                        fragmentlist.remove(fragmentlist.get(size-1));
+                    }
                     return true;
                 }
                 return false;
             }
         });
     }
+
+
 }

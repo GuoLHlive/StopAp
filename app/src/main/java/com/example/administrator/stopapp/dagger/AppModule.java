@@ -24,18 +24,8 @@ import dagger.Provides;
 
 @Module
 public class AppModule {
-    @Singleton
-    @Provides
-    public FirstFragment providesFirstFragment(){
-        return new FirstFragment();
-    }
-    @Singleton
-    @Provides
-    public NextFragment providesNextFragment(){
-        return new NextFragment();
-    }
 
-
+    @Singleton
     @Provides
     public ArrayList<BaseFragment> providesArrayList(){
         return new ArrayList<>();

@@ -25,8 +25,6 @@ public interface AppComponent {
 
     void inject(MyApp app);
 
-    FirstFragment getFirstFragment();
-    NextFragment getNextFragment();
     ArrayList<BaseFragment> getFragmentList();
 
 

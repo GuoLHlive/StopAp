@@ -14,11 +14,8 @@ import javax.inject.Inject;
 public class FirstFragment extends BaseFragment {
 
     private FirstfragmentLayoutBinding binding;
-    @Inject
-    public FirstFragment firstFragment;
-    @Inject
-    public NextFragment nextFragment;
-
+    private NextFragment nextFragment;
+    private FirstFragment firstFragment;
     @Override
     public int getLayoutId() {
         return R.layout.firstfragment_layout;
@@ -28,8 +25,8 @@ public class FirstFragment extends BaseFragment {
     public void initView() {
         binding = (FirstfragmentLayoutBinding) view;
         binding.setTxt("FirstFragment");
-        firstFragment = appComponent.getFirstFragment();
-        nextFragment = appComponent.getNextFragment();
+        nextFragment = new NextFragment();
+        firstFragment = this;
         binding.setOnClick(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

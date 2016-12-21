@@ -17,7 +17,8 @@ public class NextFragment extends BaseFragment{
 
 
     private NextfragmentLayoutBinding binding;
-
+    private NextFragment nextFragment;
+    private FirstFragment firstFragment;
 
 
     @Override
@@ -29,10 +30,12 @@ public class NextFragment extends BaseFragment{
     public void initView() {
         binding = (NextfragmentLayoutBinding) view;
         binding.setTxt("NextFragment");
+        firstFragment = new FirstFragment();
+        nextFragment = this;
         binding.setOnClick(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                switchContent(appComponent.getNextFragment(),appComponent.getFirstFragment());
+                switchContent(nextFragment,firstFragment);
             }
         });
     }
